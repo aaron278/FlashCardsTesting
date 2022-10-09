@@ -2,7 +2,6 @@
 
 from flask import Blueprint, jsonify, request
 from flask_cors import cross_origin
-import sys
 from .. import firebase
 
 card_bp = Blueprint(
