@@ -27,24 +27,24 @@ class TestApp(unittest.TestCase):
 
     def test_signup_route(self):
         '''Test the signup route of our app'''
-        response=self.app.post('/signup',json=dict(email='aaronadb@gmail.com',password='flashcards123'))
+        response=self.app.post('/signup',data=dict(email='aaronadb@gmail.com',password='flashcards123'))
         print('signup',response.status_code)
         assert response.status_code==201
         
     def test_login_route_registered_user(self):
         '''Test the login route of our app with an already registered user'''
-        response=self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
+        response=self.app.post('/login',data=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
         print('login',response.status_code)
         assert response.status_code==200
         
     def test_login_route_wrong_password(self):
         '''Test the login route of our app with a registered user with a wrong password'''
-        response=self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards'))
+        response=self.app.post('/login',data=dict(email='aaronadb@gmail.com',password='flashcards'))
         assert response.status_code==400
         
     def test_login_route_unregistered_user(self):
         '''Test the login route of our app with an unregistered user'''
-        response=self.app.post('/login',json=dict(email='aarondiasbarreto@gmail.com',password='flashcards123'))
+        response=self.app.post('/login',data=dict(email='aarondiasbarreto@gmail.com',password='flashcards123'))
         assert response.status_code==400
         
 
