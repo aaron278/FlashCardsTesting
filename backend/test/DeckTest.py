@@ -22,13 +22,15 @@ class TestApp(unittest.TestCase):
     def test_deck_id_route_get_invalid_id(self):
         '''Test the deck/id route of our app with an invalid deck id'''
         id='-zzzzzzzzzzz'
-        response=self.app.get('deck/'+id);
+        response=self.app.get('deck/'+id)
+        print("invalid id", response.status_code)
         assert response.status_code==400
        
     def test_deck_id_route_post(self):
         '''Test the deck/id route of our app with the post method'''
         id='-NDxoI5diQd242trg5-S'
-        response=self.app.post('deck/'+id);
+        response=self.app.post('deck/'+id)
+        print("post",response.status_code)
         assert response.status_code==400
     """    
     def test_deck_all_route(self):
