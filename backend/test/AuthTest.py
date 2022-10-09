@@ -30,9 +30,9 @@ class TestApp(unittest.TestCase):
         assert response.status_code==400
         
     def test_signup_route_unregistered_user(self):
-        '''Test the signup route of our app with an unregistered user'''
+        '''Test the signup route of our app with an unregistered user using an invalid email address'''
         response=self.app.post('/signup',json=dict(email='test@gmail.com',password='password123'))
-        assert response.status_code==200
+        assert response.status_code==400
         
     def test_login_route_registered_user(self):
         '''Test the login route of our app with an already registered user'''
