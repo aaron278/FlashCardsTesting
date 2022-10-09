@@ -22,7 +22,7 @@ def index():
 @cross_origin(supports_credentials=True)
 def signup():
     try:
-        data = request.get_json()
+        data = request.get_json(force=True)
         email = data['email']
         password = data['password']
     
@@ -42,7 +42,7 @@ def signup():
 @cross_origin(supports_credentials=True)
 def login():
     try:
-        data = request.get_json()
+        data = request.get_json(force=True)
         email = data['email']
         password = data['password']
         
