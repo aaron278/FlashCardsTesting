@@ -1,3 +1,4 @@
+from flask import Flask
 import sys
 sys.path.append('backend/src')
 import unittest
