@@ -12,6 +12,7 @@ Flask
 Flask-Bootstrap==3.3.7.1
 Flask-Cors==3.0.10
 Flask-HTTPAuth==3.2.2
+Flask-JSON
 Flask-Login==0.4.0
 Flask-Mail==0.9.1
 Flask-Migrate==2.0.3
