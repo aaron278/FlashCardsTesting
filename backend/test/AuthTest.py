@@ -1,6 +1,9 @@
 from flask import Flask
 import sys
 sys.path.append('backend/src')
+sys.path.append('backend/src/auth')
+sys.path.append('backend/src/deck')
+sys.path.append('backend/src/cards')
 import unittest
 from __init__ import firebase
 #from api import create_app
