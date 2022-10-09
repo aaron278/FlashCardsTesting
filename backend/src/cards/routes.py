@@ -2,7 +2,10 @@
 
 from flask import Blueprint, jsonify, request
 from flask_cors import cross_origin
-from .. import firebase
+try:
+    from .. import firebase
+except ImportError:
+    from __init__ import firebase
 
 card_bp = Blueprint(
     'card_bp', __name__
