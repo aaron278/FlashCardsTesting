@@ -1,11 +1,16 @@
 import sys
 sys.path.append('backend/src')
 import unittest
-from api import create_app
+#from api import create_app
+from auth.routes import auth_bp
+from deck.routes import deck_bp
+from cards.routes import card_bp
 
 class TestApp(unittest.TestCase):
     def setUp(self):
-        self.app=create_app().test_client()
+        self.app=Flask(__name__, instance_relative_config=False)
+        self.app.register_blueprint(auth_bp)
+        self.app=self.app.test_client()
 
     def test_index_get_route(self):
         '''Test the index route of our app'''
