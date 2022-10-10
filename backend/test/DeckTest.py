@@ -16,15 +16,15 @@ class TestApp(unittest.TestCase):
     def test_deck_id_route_get_valid_id(self):
         '''Test the deck/id route of our app with a valid deck id'''
         id='-NDxoI5diQd242trg5-S'
-        response=self.app.get('deck/'+id+'/practice');
-        print("valid id",response.status_code)
+        response=self.app.get('deck/'+id);
+        print("valid id",response.message)
         assert response.status_code==200
         
     def test_deck_id_route_get_invalid_id(self):
         '''Test the deck/id route of our app with an invalid deck id'''
         id='-zzz'
-        response=self.app.get('deck/'+id+'/practice')
-        print("invalid id", response.status_code)
+        response=self.app.get('deck/'+id)
+        print("invalid id", response.message)
         assert response.status_code==400
        
     def test_deck_id_route_post(self):
