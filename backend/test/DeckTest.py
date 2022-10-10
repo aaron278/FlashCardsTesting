@@ -15,16 +15,27 @@ class TestApp(unittest.TestCase):
         
     def test_deck_id_route_get_valid_id(self):
         '''Test the deck/id route of our app with a valid deck id'''
-        id='-NDxoI5diQd242trg5-S'
-        response=self.app.get('deck/'+id);
-        assert response.status_code==200
+        with self.app:
+            self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
+            self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
+            response=self.app.get('deck/Test')
+            assert response.status_code==200
         
-       
+    def test_deck_id_route_get_invalid_id(self):
+        '''Test the deck/id route of our app with a valid deck id'''
+        with self.app:
+            self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
+            self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
+            response=self.app.get('deck/Test123')
+            assert response.status_code==400
+    
     def test_deck_id_route_post(self):
         '''Test the deck/id route of our app with the post method'''
-        id='-NDxoI5diQd242trg5-S'
-        response=self.app.post('deck/'+id)
-        assert response.status_code==405
+        with self.app:
+            self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
+            self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
+            response=self.app.post('deck/Test')
+            assert response.status_code==405
     
     def test_deck_all_route(self):
         '''Test the deck/all route of our app'''
@@ -51,12 +62,10 @@ class TestApp(unittest.TestCase):
         
     def test_delete_deck_route_post(self):
         '''Test the deck/delete route of our app with'''
-        id='-NDxoI5diQd242trg5-S'
         with self.app:
             self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
             self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
             response=self.app.delete('deck/delete/Test')
-            print(response.status_code)
             assert response.status_code==200
 
 if __name__=="__main__":
