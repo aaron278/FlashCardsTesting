@@ -46,7 +46,7 @@ class TestApp(unittest.TestCase):
         id='-NDxoI5diQd242trg5-S'
         with self.app:
             self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
-            response=self.app.patch('deck/update'+id,json=dict(localId=id,title='TestDeck',description=' ',visibility='public'))
+            response=self.app.patch('deck/update'+id,json=dict(localId=id,title='Test Deck',description=' ',visibility='public'))
             print(response.status_code)
             assert response.status_code==201
 
