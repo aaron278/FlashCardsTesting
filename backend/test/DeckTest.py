@@ -39,6 +39,12 @@ class TestApp(unittest.TestCase):
     def test_create_deck_route(self):
         '''Test the create deck route of our app'''
         response=self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
+        assert response.status_code==201
+        
+    def test_ipdate_deck_route_post(self):
+        '''Test the deck/update route of our app with'''
+        id='-NDxoI5diQd242trg5-S'
+        response=self.app.patch('deck/update'+id,json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
         print(response.status_code)
         assert response.status_code==201
 
