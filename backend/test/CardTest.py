@@ -55,7 +55,7 @@ class CardTestApp(unittest.TestCase):
             self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
             self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
             self.app.post('/deck/Test/card/create',json=dict(localId='Test',cards=[dict(front='front',back='back',hint='hint')]))        
-            response=self.app.delete(/deck/Test/delete/TestCard')
+            response=self.app.delete('/deck/Test/delete/TestCard')
             assert response.status_code==200
 
 if __name__=="__main__":
