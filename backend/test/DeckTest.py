@@ -17,6 +17,7 @@ class TestApp(unittest.TestCase):
         '''Test the deck/id route of our app with a valid deck id'''
         id='-NDxoI5diQd242trg5-S'
         response=self.app.get('deck/'+id+'/practice');
+        print("valid id",response.status_code)
         assert response.status_code==200
         
     def test_deck_id_route_get_invalid_id(self):
