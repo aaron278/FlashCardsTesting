@@ -52,6 +52,7 @@ class TestApp(unittest.TestCase):
         '''Test the login route of our app with an unregistered user'''
         response=self.app.post('/login',json=dict(email='aarondiasbarreto@gmail.com',password='flashcards123'))
         assert response.status_code==400
+        assert 1==2
         
 
 if __name__=="__main__":
