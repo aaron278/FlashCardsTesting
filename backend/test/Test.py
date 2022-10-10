@@ -1,5 +1,5 @@
 import sys
-sys.append("..")
+sys.path.append(backend/test)
 import AuthTest
 #import DeckTest
 import unittest
