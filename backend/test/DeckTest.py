@@ -43,12 +43,10 @@ class TestApp(unittest.TestCase):
         
     def test_update_deck_route_post(self):
         '''Test the deck/update route of our app with'''
-        id='-NDxoI5diQd242trg5-S'
         with self.app:
             self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
             self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
             response=self.app.patch('deck/update/Test',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
-            print(response.status_code)
             assert response.status_code==201
         
     def test_delete_deck_route_post(self):
@@ -56,7 +54,8 @@ class TestApp(unittest.TestCase):
         id='-NDxoI5diQd242trg5-S'
         with self.app:
             self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
-            response=self.app.delete('deck/delete'+id)
+            self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
+            response=self.app.delete('deck/delete/Test')
             print(response.status_code)
             assert response.status_code==200
 
