@@ -20,15 +20,6 @@ class TestApp(unittest.TestCase):
             self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
             response=self.app.get('deck/Test')
             assert response.status_code==200
-        
-    def test_deck_id_route_get_invalid_id(self):
-        '''Test the deck/id route of our app with an invalid deck id'''
-        with self.app:
-            self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
-            self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
-            response=self.app.get('deck/Test123')
-            print(response.status_code)
-            assert response.status_code==405
     
     def test_deck_id_route_post(self):
         '''Test the deck/id route of our app with the post method'''
