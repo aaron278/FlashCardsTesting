@@ -38,7 +38,7 @@ class TestApp(unittest.TestCase):
 
     def test_create_deck_route(self):
         '''Test the create deck route of our app'''
-        response=self.app.post('/deck/create',json=dict(localId:'Test',title:'TestDeck',description:'This is a test deck',visibility:'public'))
+        response=self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
         print(response.status_code)
         assert response.status_code==201
 
