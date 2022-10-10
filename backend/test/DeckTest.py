@@ -50,7 +50,7 @@ class TestApp(unittest.TestCase):
             print(response.status_code)
             assert response.status_code==201
         
-     def test_delete_deck_route_post(self):
+    def test_delete_deck_route_post(self):
         '''Test the deck/delete route of our app with'''
         id='-NDxoI5diQd242trg5-S'
         with self.app:
