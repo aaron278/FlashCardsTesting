@@ -44,8 +44,8 @@ class TestApp(unittest.TestCase):
     def test_update_deck_route_post(self):
         '''Test the deck/update route of our app with'''
         id='-NDxoI5diQd242trg5-S'
-        with self.app:
-            self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
+        with self.app.session_transaction() as session:
+            session["user_id"] = 1
             response=self.app.patch('deck/update'+id,json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
             print(response.status_code)
             assert response.status_code==201
