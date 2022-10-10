@@ -12,8 +12,7 @@ class TestApp(unittest.TestCase):
         self.app=Flask(__name__, instance_relative_config=False)
         self.app.register_blueprint(deck_bp)
         self.app=self.app.test_client()
-        self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
-
+        
     def test_deck_id_route_get_valid_id(self):
         '''Test the deck/id route of our app with a valid deck id'''
         id='-NDxoI5diQd242trg5-S'
@@ -45,9 +44,11 @@ class TestApp(unittest.TestCase):
     def test_update_deck_route_post(self):
         '''Test the deck/update route of our app with'''
         id='-NDxoI5diQd242trg5-S'
-        response=self.app.patch('deck/update'+id,json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
-        print(response.status_code)
-        assert response.status_code==201
+        with self.app:
+            self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
+            response=self.app.patch('deck/update'+id,json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
+            print(response.status_code)
+            assert response.status_code==201
 
 if __name__=="__main__":
     unittest.main()
