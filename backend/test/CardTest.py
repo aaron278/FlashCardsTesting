@@ -47,6 +47,7 @@ class CardTestApp(unittest.TestCase):
             self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
             self.app.post('/deck/Test/card/create',json=dict(localId='Test',cards=[dict(front='front',back='back',hint='hint')]))        
             response=self.app.patch('/deck/Test/update/TestCard',json=dict(word='word',meaning='meaning'))
+            print('update',response.status_code)
             assert response.status_code==201
      
     def test_deck_delete_card_route(self):
@@ -56,6 +57,7 @@ class CardTestApp(unittest.TestCase):
             self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
             self.app.post('/deck/Test/card/create',json=dict(localId='Test',cards=[dict(front='front',back='back',hint='hint')]))        
             response=self.app.delete('/deck/Test/delete/TestCard')
+            print('delete',response.status_code)
             assert response.status_code==200
 
 if __name__=="__main__":
