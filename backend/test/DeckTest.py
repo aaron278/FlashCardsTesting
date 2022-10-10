@@ -46,7 +46,8 @@ class TestApp(unittest.TestCase):
         id='-NDxoI5diQd242trg5-S'
         with self.app:
             self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
-            response=self.app.patch('deck/update'+id,json=dict(localId=id,title='Test Deck',description=' ',visibility='public'))
+            self.app.post('/deck/create',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
+            response=self.app.patch('deck/update',json=dict(localId='Test',title='TestDeck',description='This is a test deck',visibility='public'))
             print(response.status_code)
             assert response.status_code==201
         
@@ -57,7 +58,7 @@ class TestApp(unittest.TestCase):
             self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
             response=self.app.delete('deck/delete'+id)
             print(response.status_code)
-            assert response.status_code==201
+            assert response.status_code==200
 
 if __name__=="__main__":
     unittest.main()
