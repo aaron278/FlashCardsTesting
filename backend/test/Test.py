@@ -1,7 +1,7 @@
 import sys
 sys.path.append('backend/test')
-from AuthTest import TestApp
-from DeckTest import TestApp
+from AuthTest import AuthTestApp
+from DeckTest import DeckTestApp
 import unittest
 
 if __name__=="__main__":
