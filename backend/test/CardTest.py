@@ -49,7 +49,7 @@ class CardTestApp(unittest.TestCase):
             response=self.app.patch('/deck/Test/update/TestCard',json=dict(word='word',meaning='meaning'))
             assert response.status_code==201
      
-   def test_deck_delete_card_route(self):
+    def test_deck_delete_card_route(self):
         '''Test the delete card in a deck route of our app'''
         with self.app:
             self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
