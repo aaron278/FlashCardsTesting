@@ -49,6 +49,15 @@ class TestApp(unittest.TestCase):
             response=self.app.patch('deck/update'+id,json=dict(localId=id,title='Test Deck',description=' ',visibility='public'))
             print(response.status_code)
             assert response.status_code==201
+        
+     def test_delete_deck_route_post(self):
+        '''Test the deck/delete route of our app with'''
+        id='-NDxoI5diQd242trg5-S'
+        with self.app:
+            self.app.post('/login',json=dict(email='aaronadb@gmail.com',password='flashcards123'),follow_redirects=True)
+            response=self.app.delete('deck/delete'+id)
+            print(response.status_code)
+            assert response.status_code==201
 
 if __name__=="__main__":
     unittest.main()
